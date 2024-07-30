@@ -15,4 +15,48 @@
 
 // ML framework runs on Python (Tensorflow, Pytorth, Scilearn, Numpy, Pandas)
 
-// ....
+// Intro to JS
+
+// JS: Dynamically typed language
+// Java, TypeScript (superset of JS), C#, Golang, C/C++: Statically typed language
+
+var myFirstVariable = "hello world"; // assignment operator (=)
+// console.log(typeof myFirstVariable);
+// console.log(myFirstVariable);
+
+// data types are data formats
+// text -> string
+// number -> number
+// truthy/falsy values -> boolean
+// an unassigned/undeclared variable -> undefined
+// explicit declaration of absence of value -> null
+
+myFirstVariable = 5; // reassign to a number (notice 'var' reserved keyword is not used)
+// console.log(typeof myFirstVariable);
+// console.log(myFirstVariable);
+
+// JS primitive data types: string, number, boolean, undefined, null
+var myName = "tai"; // string
+var age = 10; // number
+var active = true; // boolean (true, false)
+var membership; // undefined - declare variable, but did not "assign" a value
+var undef = undefined;
+var dateCreated = null; // null is also a primitive data type used as falsy/zero value for all data types, not just "objects" as is the case in other languages
+
+var result = null;
+result = {};
+
+// console.log(typeof membership);
+// console.log(typeof undef);
+// console.log(typeof dateCreated);
+
+// other keywords for declaring variables - ES6
+let x = 5; // 'let' allows for re-assignment
+const y = 10; // 'const' does not allow for re-assignment
+
+// reassign x, y with a diff value / diff data type
+x = "tai";
+// y = "tai";
+let a; // declaring without assigning value
+console.log(a); // 'let' also takes on undefined if not assigned a value
+// const b; // declaring without assigning value
