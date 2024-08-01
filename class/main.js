@@ -60,3 +60,10 @@ x = "tai";
 let a; // declaring without assigning value
 console.log(a); // 'let' also takes on undefined if not assigned a value
 // const b; // declaring without assigning value
+
+// re-declaring (using keyword 'var' 'let' 'const' again) vs re-assignment (only use '=')
+// var greeting = "hi"
+// var greeting = "hello"
+
+// let salutation = "hi"
+// let salutation = "hello"
