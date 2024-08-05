@@ -6,6 +6,28 @@ console.log(arrA);
 arrA[1] = 999;
 arrA[2] = 999.5;
 arrA.push(1000);
+arrA.push(1001, 1002, 1003);
+arrA.push([1004, 1005, 1006]);
+arrA[8] = {};
+// arrA[1] = 999.3;
 
 console.log(arrA);
 // console.log(arrA[0]);
+console.log(arrA.length);
+
+// build array, start a index 1, add, index 7 add new item, try pushing some items to the array
+
+// const itemRemoved = arrA.pop();
+// console.log(arrA);
+
+// try out Array.unshift() and .shift(), print removed item
+// arrA.unshift(undefined);
+// console.log(arrA);
+// const removed = arrA.shift();
+// console.log(removed);
+// console.log(arrA);
+
+for (let i = 0; i < arrA.length; i++) {
+	const element = arrA[i]; //arrA[0], arrA[1]
+	console.log(`at index ${i}, the value is ${element}`);
+}
