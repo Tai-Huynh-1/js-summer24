@@ -27,7 +27,31 @@ console.log(arrA.length);
 // console.log(removed);
 // console.log(arrA);
 
-for (let i = 0; i < arrA.length; i++) {
-	const element = arrA[i]; //arrA[0], arrA[1]
-	console.log(`at index ${i}, the value is ${element}`);
+const fruits = ["grapes", "apples", "oranges"];
+
+function loopPrint(array) {
+	console.log("about to START loop");
+	for (let i = 0; i < array.length; i++) {
+		const element = array[i]; // i = 0, 1, 2, 3
+		console.log(`at index ${i}, the value is ${element}`);
+	}
+	console.log("about to END loop");
 }
+
+// loopPrint(arrA);
+// loopPrint(fruits);
+
+const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// sum array and print the sum before function ends
+function sumList(array) {
+	let sum = 0;
+	for (let i = 0; i < array.length; i++) {
+		const element = array[i];
+		sum = sum + element;
+	}
+	console.log(sum);
+}
+
+sumList(nums);
+sumList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
