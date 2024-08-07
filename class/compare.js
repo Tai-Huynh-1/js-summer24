@@ -45,3 +45,7 @@ console.log("arrA", arrA); // [100]
 console.log("arrB", arrB); // [100]
 console.log("arrC", arrC); // [10]
 console.log("arrA === arrB", arrA === arrB); // true, true, true
+
+arrB[0] = 200;
+console.log("arrA", arrA); // [200]
+console.log("arrB", arrB); // [200]
