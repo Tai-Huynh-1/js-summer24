@@ -91,22 +91,42 @@ function add(num) {
 // console.log(add(6));
 
 // call stack
-function print(val) {
-	console.log(val);
+// function print(val) {
+// 	console.log(val);
+// }
+// const myLetterA = "A";
+// const myLetterB = "B";
+
+// console.log(myLetterA);
+// print(myLetterB);
+
+// print(add(5));
+
+function isEven(num) {
+	return num % 2 === 0;
 }
-const myLetterA = "A";
-const myLetterB = "B";
 
-console.log(myLetterA);
-print(myLetterB);
+// JS operators
+function operator(num1, num2) {
+	const num1IsEven = isEven(num1);
+	const num2IsEven = isEven(num2);
 
-print(add(5));
+	// && -> "and"
+	// || -> "or"
+	if (num1IsEven && num2IsEven) {
+		console.log("both are even");
+	} else if (isEven(num1) || isEven(num2)) {
+		console.log("at least one number is even");
+	} else if (num1 > num2) {
+		// >, <, >=, <=
+		console.log("num1 is greater than num2");
+	}
+}
 
-console.log("hello" + " " + "world");
-console.log("hello".concat(" world"));
-let i = 0;
-let val = 100;
-console.log("index is: " + i + ", value is: " + val); // <----- string concatenation with "+"
-console.log(`index is: ${i}, value is: ${val} `); // <------ template string literals
-console.log("index is: ".concat(i, ", value is: ", val)); // .concat method
-console.log("hello".includes());
+function div(a, b) {
+	return a / b;
+}
+
+function mult(a, b) {
+	return a * b;
+}
