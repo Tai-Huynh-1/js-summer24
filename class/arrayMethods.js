@@ -99,7 +99,7 @@ function findEvensWithContinue(array) {
 function findWithForEach(target, array) {
 	// find index for the target, otherwise return -1
 	let indexToReturn = -1;
-	array.forEach(function (element, index) {
+	array.forEach((element, index) => {
 		console.log(element);
 		if (element === target) {
 			console.log("found at index: ", index);
@@ -110,6 +110,34 @@ function findWithForEach(target, array) {
 	return indexToReturn;
 }
 
-console.log("index: ", findWithForEach(5, arr));
+// console.log("index: ", findWithForEach(5, arr));
 
-// filter and reduce
+// filter
+const duplicates = [5, 5, 6, 8, 7, 9, 6, 2, 3, 4, 5, 4, 5, 1];
+
+function filterFor(target, array) {
+	return array.filter((element) => element !== target);
+}
+// console.log(filterFor(5, duplicates));
+// console.log(duplicates);
+
+// reduce
+function sum2(array) {
+	// const cb = (prevValue, currValue) => {}
+	return array.reduce((prevValue, currValue) => {
+		return prevValue + currValue;
+	}, 0);
+}
+
+function copy2(array) {
+	return array.reduce(
+		(prev, curr) => {
+			prev[0] = prev[0] + curr;
+			return prev;
+		},
+		[0]
+	);
+}
+
+console.log(copy2(duplicates));
+console.log(duplicates);
