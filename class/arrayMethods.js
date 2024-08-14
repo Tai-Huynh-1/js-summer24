@@ -139,5 +139,5 @@ function copy2(array) {
 	);
 }
 
-console.log(copy2(duplicates));
-console.log(duplicates);
+// console.log(copy2(duplicates));
+// console.log(duplicates);
