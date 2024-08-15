@@ -1,14 +1,18 @@
 // objects are a collection of <key: value> pairs separated by ,
 // ORDER DOES NOT MATTER, WHAT MATTERS IS THE KEY VALUE
 // don't get confused with these other notations/syntaxes
-// function myFunc() {}
-// const arr = () => {}
+// function myFunc() {}, myFunc()
+// const arr = () => {}, arr()
+// const func = function () {}, func()
 
 // create
 const student1 = {
 	firstName: "Anne",
 	email: "anne@gmail.com",
-	phone: "111-111-1111",
+	phone: {
+		home: "",
+		cell: "",
+	},
 	age: 15,
 	isActive: true,
 	address: {
@@ -17,7 +21,41 @@ const student1 = {
 	},
 	enrollment: ["cs101", "math1a", "chem2a"], // <---- chem2a
 	gradYear: null,
+
+	// methods
+	getName: function () {
+		return this.getName;
+	},
+
+	// ES6 new notation does not need a ":" or "function" keyword
+	// phoneType: "home", "cell"
+	getPhone(phoneType) {
+		return this.phone[phoneType];
+	},
+
+	// 2 methods
+	// add course method, param: newCourse
+	addCourse: function (newCourse) {
+		if (newCourse === "") return false;
+		if (this.enrollment.includes(newCourse)) return false;
+		this.enrollment.push(newCourse);
+		return true;
+	},
+
+	// remove an existing course, param: courseToRemove
+	removeCourse(courseToRemove) {
+		const index = this.enrollment.indexOf(courseToRemove);
+		if (index > -1) {
+			this.enrollment.splice(index, 1);
+			return true;
+		}
+		return false;
+	},
 };
+
+student1.addCourse("lang04");
+student1.removeCourse("math1a");
+console.log(student1);
 
 // access/read data in an object => we use the "." (students1.email) or <object>["key"] (ex: student1["email"])
 // console.log(student1.email);
@@ -75,6 +113,7 @@ student1.getShippingAddress = () => {
 	return this.address.shippingAddress;
 };
 
-console.log(student1.getShippingAddress());
+// console.log(student1.getShippingAddress());
 
 // globalThis and arrow functions
+// DON'T USE "THIS" in arrow functions, if your code uses "THIS", use "function" declaration
