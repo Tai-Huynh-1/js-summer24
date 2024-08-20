@@ -73,5 +73,3 @@ car4.setAc(70);
 
 const car5 = new Car("honda", "2019", "grey", "civic");
 car5.setAc(85);
-
-// search and time complexity of array vs object, MockMap class
