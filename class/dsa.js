@@ -93,6 +93,6 @@ function binarySearch(sortedArr, target) {
 }
 
 // linearSearch(bin, 5000);
-binarySearch(bin, 5000);
+// binarySearch(bin, 5000);
 
 // listed list DS
