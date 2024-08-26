@@ -89,12 +89,20 @@ class DynamicList {
 	// TODOS: Implement shift, peekFirst, peekLast, get, indexOf
 	// Think about various state of the array at the beginning of your method and how it will change after. Draw it out.
 	// Also specify the time complexity for each of these 5 methods based on your implementation
-
+	// [6, 5, 4, _ , _]
 	/**
 	 * Remove from front and return that element, shift all items left by 1. If list is empty, return undefined.
 	 * time complexity:
 	 */
-	shift() {}
+	shift() {
+		if (this.size === 0) return undefined;
+		const first = this.array[0];
+		for (let i = 0; i < this.size; i++) {
+			this.array[i] = this.array[i + 1];
+		}
+		this.size--;
+		return first;
+	}
 
 	/**
 	 * Return first element, but does not remove, or returns null if list is empty
@@ -123,15 +131,17 @@ class DynamicList {
 	indexOf(target) {}
 }
 
-// const dl = new DynamicList();
-// dl.push(999);
-// dl.print();
-// dl.push(1000);
-// dl.push(1001);
-// dl.print();
-// dl.push(1003);
-// dl.print();
-// dl.pop();
-// dl.print();
-// dl.push(5000);
-// dl.print();
+const dl = new DynamicList();
+dl.push(999);
+dl.print();
+dl.push(1000);
+dl.push(1001);
+dl.print();
+dl.push(1003);
+dl.print();
+dl.pop();
+dl.print();
+dl.push(5000);
+dl.print();
+dl.shift();
+dl.print();
