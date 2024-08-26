@@ -28,7 +28,27 @@ class LinkedList {
 	constructor(val) {
 		this.sentinel = new Node(); // create sentinel node
 		this.size = 0;
-		this.addLast(val);
+		if (val) this.addLast(val);
+	}
+
+	getHead() {
+		return this.sentinel.next;
+	}
+
+	print() {
+		if (this.size === 0) {
+			console.log("{ }", this.size);
+			return;
+		}
+
+		let list = "{ ";
+		let curr = this.getHead();
+		while (curr !== null) {
+			list += curr.val + " -> ";
+			curr = curr.next;
+		}
+		list = list + "null }";
+		console.log(list, this.size);
 	}
 
 	// if added, return true
@@ -52,31 +72,82 @@ class LinkedList {
 		return true;
 	}
 
-	//
-	removeLast() {}
+	/**
+	 * Remove the last item in the list and return it. Return null if list is empty.
+	 */
+	removeLast() {
+		if (this.size === 0) return null; // list is empty
 
-	getHead() {
-		return this.sentinel.next;
-	}
-
-	print() {
-		if (this.size === 0) {
-			console.log("{ }", this.size);
-			return;
+		if (this.size === 1) {
+			const removed = this.getHead().val;
+			this.sentinel.next = null;
+			this.size--;
+			return removed;
 		}
 
-		let list = "{ ";
 		let curr = this.getHead();
-		while (curr !== null) {
-			list += curr.val + " -> ";
+		while (curr.next.next !== null) {
 			curr = curr.next;
 		}
-		list = list + "null }";
-		console.log(list, this.size);
+		const removed = curr.next.val;
+		curr.next = null;
+		this.size--;
+		return removed;
 	}
+
+	// TODOS: Implement the methods below. Provide the time complexity for each method.
+
+	/**
+	 * Add val to beginning of the list.
+	 * @param {*} val
+	 */
+	addFirst(val) {}
+
+	/**
+	 * Remove the first item in the list and return it. Return null if list is empty.
+	 */
+	removeFirst() {}
+
+	/**
+	 * Add the value (val) at the specified index in the list
+	 * @param {*} index
+	 * @param {*} val
+	 */
+	add(index, val) {}
+
+	/**
+	 * Check list for the target value. Return true if list contains target, else return false.
+	 * @param {*} target - The target value to search for.
+	 */
+	contains(target) {}
+
+	/**
+	 * Return value at given index, else return undefined.
+	 * @param {*} index
+	 */
+	get(index) {}
+
+	/**
+	 * Find the index of the target value. Return -1 if target is not found.
+	 * @param {*} target
+	 */
+	indexOf(target) {}
+
+	/**
+	 * Return first item in list, without removing it.
+	 */
+	peekFirst() {}
+
+	/**
+	 * Return last item in list, without removing it.
+	 */
+	peekLast() {}
 }
 
-const list = new LinkedList(1);
+const list = new LinkedList();
 list.addLast(3);
-list.addLast(5);
+// list.addLast(5);
+// list.addLast(7);
+list.print();
+console.log(list.removeLast());
 list.print();

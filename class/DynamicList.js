@@ -94,15 +94,7 @@ class DynamicList {
 	 * Remove from front and return that element, shift all items left by 1. If list is empty, return undefined.
 	 * time complexity:
 	 */
-	shift() {
-		if (this.size === 0) return undefined;
-		const first = this.array[0];
-		for (let i = 0; i < this.size; i++) {
-			this.array[i] = this.array[i + 1];
-		}
-		this.size--;
-		return first;
-	}
+	shift() {}
 
 	/**
 	 * Return first element, but does not remove, or returns null if list is empty
