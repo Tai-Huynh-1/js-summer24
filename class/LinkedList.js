@@ -95,7 +95,8 @@ class LinkedList {
 		return removed;
 	}
 
-	// TODOS: Implement the methods below. Provide the time complexity for each method.
+	// TODOS: Implement the methods below: addFirst, removeFirst, add, contains, get, indexOf, peekFirst, peekLast.
+	// Provide the time complexity for each method.
 
 	/**
 	 * Add val to beginning of the list.
