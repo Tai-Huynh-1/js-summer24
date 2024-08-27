@@ -11,11 +11,11 @@ class Node {
 
 class DoublyLinkedList {
 	sentinel; // ptr to first node (does not count toward size)
-	last; // ptr to last node
+	tail; // ptr to last node
 	size;
 	constructor(data = undefined) {
 		this.sentinel = new Node();
-		this.last = this.sentinel;
+		this.tail = this.sentinel;
 		this.size = 0;
 
 		// add data if provided
@@ -26,8 +26,8 @@ class DoublyLinkedList {
 		return this.sentinel.next;
 	}
 
-	getLast() {
-		return this.last;
+	getTail() {
+		return this.tail;
 	}
 
 	print() {
@@ -53,7 +53,7 @@ class DoublyLinkedList {
 		}
 
 		let list = "";
-		let curr = this.getLast();
+		let curr = this.getTail();
 		while (curr.prev !== null && curr.prev.data !== undefined) {
 			list = " <- " + curr.data + list;
 			curr = curr.prev;
@@ -71,9 +71,9 @@ class DoublyLinkedList {
 	 * time: O(1)
 	 */
 	addLast(data) {
-		const newNode = new Node(data, this.last, null); // new node
-		this.last.next = newNode; // establish forward relationship
-		this.last = newNode; // maintain/reassign the last ptr to new node
+		const newNode = new Node(data, this.tail, null); // new node
+		this.tail.next = newNode; // establish forward relationship
+		this.tail = newNode; // maintain/reassign the last ptr to new node
 		this.size++;
 	}
 
@@ -92,10 +92,10 @@ class DoublyLinkedList {
 			return removedNode.data;
 		}
 
-		const lastToRemove = this.getLast();
+		const lastToRemove = this.getTail();
 		const secondToLast = lastToRemove.prev;
 		secondToLast.next = null;
-		this.last = secondToLast; // reassign new last node
+		this.tail = secondToLast; // reassign new last node
 		this.size--;
 		return lastToRemove.data;
 	}
