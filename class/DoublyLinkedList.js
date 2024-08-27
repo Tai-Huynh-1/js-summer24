@@ -71,9 +71,9 @@ class DoublyLinkedList {
 	 * time: O(1)
 	 */
 	addLast(data) {
-		const newNode = new Node(data, this.last); // new node
-		this.last.next = newNode;
-		this.last = newNode; // reassign the last ptr to new node
+		const newNode = new Node(data, this.last, null); // new node
+		this.last.next = newNode; // establish forward relationship
+		this.last = newNode; // maintain/reassign the last ptr to new node
 		this.size++;
 	}
 
@@ -101,10 +101,53 @@ class DoublyLinkedList {
 	}
 
 	/**
-	 *
+	 * Add item to beginning of the list.
+	 * @param {*} data
+	 * {} <-> {N} <-> {1} <-> null
+	 */
+	addFirst(data) {
+		if (this.size === 0) {
+			this.addLast(data); // delegate to addLast to maintain last ptr
+			return;
+		}
+
+		const currHead = this.getHead();
+		const newNode = new Node(data, this.sentinel, currHead); // {} <-> {N} -> {1} <-> null
+		this.sentinel.next = newNode;
+		currHead.prev = newNode;
+		this.size++;
+	}
+
+	// TODOS: Implement the methods below for the DoublyLinkedList class: removeFirst, remove, add, peekFirst, peekLast.
+	// Provide the time complexity for each method.
+
+	/**
+	 * Remove the first item in the list and return it. Return null if list is empty.
+	 */
+	removeFirst() {}
+
+	/**
+	 * Remove item at the given index and return it if index is valid.
+	 * @param {*} index
+	 */
+	remove(index) {}
+
+	/**
+	 * Add the data at the specified index in the list. Return boolean true if successful, else false.
+	 * @param {*} index
 	 * @param {*} data
 	 */
-	addFirst(data) {}
+	add(index, data) {}
+
+	/**
+	 * Return first item in list, without removing it.
+	 */
+	peekFirst() {}
+
+	/**
+	 * Return last item in list, without removing it.
+	 */
+	peekLast() {}
 }
 
 const lst = new DoublyLinkedList(0);
@@ -114,6 +157,6 @@ lst.addLast(7);
 lst.print();
 lst.printBackward();
 
-lst.removeLast();
+lst.addFirst(-1);
 lst.print();
 lst.printBackward();
