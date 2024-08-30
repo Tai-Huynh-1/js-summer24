@@ -90,5 +90,99 @@ function outer(a) {
 	};
 }
 
-const returnedFunc = outer(5);
-console.log(returnedFunc(6));
+// const returnedFunc = outer(5);
+// console.log(returnedFunc(6));
+
+// hiding variables and exposing functionality usign closrue & functional programming
+function counter() {
+	let counter = 0;
+
+	function increase() {
+		counter++;
+		return counter;
+	}
+
+	function decrease() {
+		counter--;
+		return counter;
+	}
+
+	function getCounter() {
+		return counter;
+	}
+
+	return [getCounter, increase, decrease];
+}
+
+const [getCounterA, incA, decA] = counter();
+const [getCounterB, incB, decB] = counter();
+
+incA();
+incA();
+// console.log(getCounterA()); // 2
+incB();
+// console.log(getCounterA()); // 2
+// console.log(getCounterB()); // 1
+
+// pure function: function will not mutate its given input, the function should only work with resources given to it
+// resources => function parameters
+const original = [1, 2, 3, 4];
+
+function impureFunc(array) {
+	for (let i = 0; i < array.length; i++) {
+		array[i] = array[i] + 2;
+	}
+	return array;
+}
+
+function pureFunc(array) {
+	const arr = [];
+	for (let i = 0; i < array.length; i++) {
+		arr[i] = array[i] + 2;
+	}
+	return arr;
+}
+
+// write a mock method to Array.prototype
+Array.prototype.mockForEach = function (cb) {
+	for (let i = 0; i < this.length; i++) {
+		const element = this[i];
+		cb(element, i, this);
+	}
+};
+
+Array.prototype.mockMap = function (cb) {
+	const newArray = [];
+	for (let i = 0; i < this.length; i++) {
+		const element = this[i];
+		const returned = cb(element, i, this);
+		newArray.push(returned);
+	}
+	return newArray;
+};
+
+original.mockForEach((el, idx, array) => {
+	array[idx] = el * 2;
+	return;
+});
+
+// console.log(
+// 	original.mockMap((el) => {
+// 		return el * 4;
+// 	})
+// );
+
+// console.log(original);
+
+// loop over objects
+const object = { a: 1, b: 2, c: 3 };
+
+for (const key in object) {
+	const val = object[key];
+	console.log(`key: ${key}: val: ${val}`);
+}
+
+// for-of loop for arrays
+for (const el of original) {
+	console.log(el);
+}
