@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import Comment from "./components/Comment";
 // import App from "./App";
 
 function Welcome(props) {
@@ -51,7 +52,8 @@ console.log("element", element);
 
 // setInterval(tick, 1000);
 
-root.render(element);
+const author = { avatarUrl: "...", name: "Nabeela" };
+root.render(<Comment author={author} text={"Comment 1"} date={new Date()} />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
