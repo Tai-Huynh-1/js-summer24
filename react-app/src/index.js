@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import Form from "./components/Form";
+import Toggle from "./components/Toggle";
 // import "./index.css";
 
 // function Clock(props) {
@@ -17,6 +17,6 @@ import Form from "./components/Form";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<div>
-		<Form />
+		<Toggle />
 	</div>
 );
