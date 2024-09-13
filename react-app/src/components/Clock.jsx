@@ -3,7 +3,7 @@ import { Component } from "react";
 // proper functional React component (should be in its own file)
 // but I'm not doing that due to laziness
 function FormattedDate(props) {
-	return <h2>It is {this.state.date.toLocaleTimeString()}</h2>;
+	return <h2>It is {props.date.toLocaleTimeString()}</h2>;
 }
 
 class Clock extends Component {
@@ -30,6 +30,8 @@ class Clock extends Component {
 		// this.state = { date: new Date()} // wrong way, cannot reassign
 		// this.state.date = new Date() // also wrong way
 
+		console.log("tick running");
+
 		const newState = { date: new Date() };
 		this.setState(newState); // NEED TO USE THIS METHOD TO UPDATE STATE
 	}
@@ -37,12 +39,14 @@ class Clock extends Component {
 	// the method that returns the JSX we want to display to the UI
 	// React will also call this method on its own, we just need to define it, hence React is declarative
 	render() {
-		return (
+		const element = (
 			<div>
 				<h1>Hello world. I'm {this.state.username}</h1>
-				<FormattedDate />
+				<FormattedDate date={this.state.date} />
 			</div>
 		);
+		// console.log(element);
+		return element;
 	}
 }
 

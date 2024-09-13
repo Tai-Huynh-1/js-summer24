@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import Clock from "./components/Clock";
+import Form from "./components/Form";
 // import "./index.css";
 
 // function Clock(props) {
@@ -17,6 +17,6 @@ import Clock from "./components/Clock";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<div>
-		<Clock />
+		<Form />
 	</div>
 );
