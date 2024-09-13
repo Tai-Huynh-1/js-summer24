@@ -36,23 +36,23 @@ export default Toggle;
 
 // const toggle = {
 // 	handleClick: function () {
-// 		this.setState()
+// 		this.setState();
 // 	},
 
-// 	setState: function() {
-// 		console.log("set state from toggle component")
-// 	}
-// }
+// 	setState: function () {
+// 		console.log("set state from toggle component");
+// 	},
+// };
 
 // function button(onClick, children) {
 // 	const button = {
 // 		children: children,
 // 		// unbound will call: button.setState(), but this method is not defined
 // 		// bound will call: toggle.setState(), this is okay, bcos setState is defined on "toggle" object
-// 		onClick: onClick // function() {this.setState()}
-// 	}
-// 	return button
+// 		onClick: onClick, // function() {this.setState()}
+// 	};
+// 	return button;
 // }
 
-// button(toggle.handleClick, "ON")
-// button.onClick()
+// const button1 = button(toggle.handleClick, "ON");
+// button1.onClick();
