@@ -34,6 +34,7 @@ class Toggle extends Component {
 
 export default Toggle;
 
+// REFER TO react.js file in class folder
 // const toggle = {
 // 	handleClick: function () {
 // 		this.setState();
