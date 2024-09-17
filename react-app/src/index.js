@@ -1,10 +1,11 @@
 import ReactDOM from "react-dom/client";
-import Login from "./components/Login";
+import List from "./components/List";
+import Accordion from "./components/Accordion";
 // import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<div>
-		<Login />
+		<Accordion />
 	</div>
 );

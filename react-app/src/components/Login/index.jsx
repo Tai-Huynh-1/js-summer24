@@ -42,7 +42,7 @@ class Login extends Component {
 	}
 
 	render() {
-		const { user } = this.state;
+		const { user } = this.state; // object deconstruction
 		return (
 			<div>
 				<Greeting user={user} />
