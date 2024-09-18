@@ -1,30 +1,32 @@
-import { Component } from "react";
+import { Component, createRef } from "react";
 
 class SignUp extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { name: "InitialName", email: "", password: "" };
+		this.state = { name: "", email: "", password: "" };
 
-		this.handleNameChange = this.handleNameChange.bind(this);
-		this.handleEmailChange = this.handleEmailChange.bind(this);
-		this.handlePasswordChange = this.handlePasswordChange.bind(this);
+		this.pwRef = createRef();
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleNameChange(event) {
-		const nameInputValue = event.target.value;
+	handleChange(event) {
+		console.log(event);
+		const { id, value } = event.target;
 		this.setState({
-			name: nameInputValue,
+			[id]: value,
 		});
 	}
 
-	handleEmailChange(event) {}
-
-	handlePasswordChange(event) {}
-
-	handleSubmit(event) {}
+	handleSubmit(event) {
+		event.preventDefault();
+		console.log(this.pwRef);
+	}
 
 	render() {
 		console.log("state ", this.state);
+		console.log("pwRef", this.pwRef);
+		const { name, email, password } = this.state;
 		return (
 			<form id="signup-form-container" onSubmit={this.handleSubmit}>
 				<div id="title-container">
@@ -35,17 +37,17 @@ class SignUp extends Component {
 				<div id="signup-form-input-container">
 					<label id="name">
 						Name:
-						<input id="name" type="text" name="name" onChange={this.handleNameChange} value={this.state.name} />
+						<input id="name" type="text" name="name" onChange={this.handleChange} value={name} />
 					</label>
 
 					<label id="email">
 						Email:
-						<input id="email" type="email" name="email" />
+						<input id="email" type="email" name="email" onChange={this.handleChange} value={email} />
 					</label>
 
 					<label id="password">
 						Password:
-						<input id="password" type="password" name="password" />
+						<input id="password" type="password" name="password" ref={this.pwRef} />
 					</label>
 				</div>
 
