@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./Accordion.css";
 
 const data = [
 	{
@@ -26,13 +27,20 @@ const data = [
 // 1. hide tab content unless expanded is true
 // 2. add a toggle for expanding / contracting
 // TODO: add toggle functionality to the tab label
-function AccordionTab({ tab: { label, content, expanded } }) {
+function AccordionTab({ tab: { id, label, content, expanded }, handleToggle }) {
+	// function handleClick() {
+	// 	handleToggle(id);
+	// }
 	return (
-		<div id="tab-container">
-			<div id="tab-label" onClick={}>
+		<div id="accordion-tab-container">
+			<div id="accordion-tab-label" onClick={() => handleToggle(id)}>
 				<strong>{label}</strong>
 			</div>
-			{expanded && <div id="tab-content">{content}</div>}
+			{expanded && (
+				<div id="accordion-tab-content-container">
+					<div id="accordion-tab-content">{content}</div>
+				</div>
+			)}
 		</div>
 	);
 }
@@ -42,22 +50,24 @@ class Accordion extends Component {
 		super(props);
 		this.state = { data: null };
 
-        this.handleToggle = this.handleToggle.bind(this)
+		this.handleToggle = this.handleToggle.bind(this);
 	}
 
 	componentDidMount() {
 		this.setState({ data: data.map((tab) => ({ ...tab, expanded: false })) });
 	}
 
-    // TODO: write the toggle logic
-    // clicking on 1 tab will toggle that expanded state for that single tab only
-    // all other tab's expanded state should remain the same
-    handleToggle() {
-        
-    }
+	// TODO: write the toggle logic
+	// clicking on 1 tab will toggle that expanded state for that single tab only
+	// all other tab's expanded state should remain the same
+	handleToggle(id) {
+		this.setState((prevState) => ({
+			data: prevState.data.map((tab) => (tab.id === id ? { ...tab, expanded: !tab.expanded } : tab)),
+		}));
+	}
 
 	render() {
-		return <div id="accordion-container">{this.state.data && this.state.data.map((tab) => <AccordionTab key={tab.id} tab={tab} />)}</div>;
+		return <div id="accordion-container">{this.state.data && this.state.data.map((tab) => <AccordionTab key={tab.id} tab={tab} handleToggle={this.handleToggle} />)}</div>;
 	}
 }
 

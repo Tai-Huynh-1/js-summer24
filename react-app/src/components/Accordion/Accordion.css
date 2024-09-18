@@ -1,0 +1,22 @@
+#accordion-tab-container {
+	border-color: black;
+	border-style: solid;
+	margin-bottom: 10px;
+	cursor: pointer;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#accordion-tab-label {
+	text-align: center;
+}
+
+#accordion-tab-content-container {
+	border-color: rgb(42, 165, 144);
+	border-top-style: dotted;
+	margin-top: 5px;
+}
+
+#accordion-tab-content {
+	padding: 5px 10px;
+}
