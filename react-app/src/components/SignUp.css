@@ -1,0 +1,32 @@
+#signup-form-container {
+	border: 1px solid black;
+	width: 50%;
+	padding: 15px;
+}
+
+#title-container {
+	text-align: center;
+}
+
+#signup-form-input-container {
+	display: flex;
+	flex-direction: column;
+}
+
+#signup-form-input-container label {
+	margin: 10px auto;
+}
+
+#signup-form-submit-container {
+	display: flex;
+}
+
+#signup-form-submit-container button {
+	margin: 10px auto;
+	padding: 10px;
+	background-color: rgb(5, 110, 80);
+	color: aliceblue;
+	border-style: none;
+	border-radius: 10px;
+	cursor: pointer;
+}

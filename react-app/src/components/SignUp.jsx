@@ -1,4 +1,5 @@
 import { Component, createRef } from "react";
+import "./SignUp.css";
 
 class SignUp extends Component {
 	constructor(props) {
@@ -20,12 +21,11 @@ class SignUp extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log(this.pwRef);
+		alert("Submitting the form: " + JSON.stringify(this.state));
 	}
 
 	render() {
 		console.log("state ", this.state);
-		console.log("pwRef", this.pwRef);
 		const { name, email, password } = this.state;
 		return (
 			<form id="signup-form-container" onSubmit={this.handleSubmit}>
@@ -47,7 +47,7 @@ class SignUp extends Component {
 
 					<label id="password">
 						Password:
-						<input id="password" type="password" name="password" ref={this.pwRef} />
+						<input id="password" type="password" name="password" onChange={this.handleChange} value={password} />
 					</label>
 				</div>
 
