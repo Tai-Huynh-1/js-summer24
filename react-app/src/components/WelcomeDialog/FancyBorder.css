@@ -1,0 +1,11 @@
+.fancy-border-blue {
+	border: 5px dotted blue;
+}
+
+.fancy-border-red {
+	border: 5px dashed red;
+}
+
+.fancy-border-green {
+	border: 5px double green;
+}

@@ -1,0 +1,15 @@
+.split-pane {
+	border: 2px solid black;
+	width: 100%;
+	display: flex;
+}
+
+.split-pane-left {
+	width: 50%;
+	border: 5px solid rgb(95, 197, 217);
+}
+
+.split-pane-right {
+	width: 50%;
+	border: 5px solid rgb(179, 96, 158);
+}

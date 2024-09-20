@@ -1,0 +1,21 @@
+.btn {
+	padding: 10px;
+	border-radius: 5px;
+	border-style: none;
+	font-size: small;
+	background-color: rgb(31, 27, 27);
+	color: white;
+	cursor: pointer;
+}
+
+.btn-primary {
+	background-color: rgb(70, 124, 231);
+}
+
+.btn-success {
+	background-color: rgb(59, 146, 107);
+}
+
+.btn-danger {
+	background-color: rgb(194, 93, 96);
+}
