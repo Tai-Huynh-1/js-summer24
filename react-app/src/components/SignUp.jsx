@@ -27,6 +27,30 @@ class SignUp extends Component {
 	render() {
 		console.log("state ", this.state);
 		const { name, email, password } = this.state;
+
+		const fields = [
+			{
+				id: "name",
+				name: "name",
+				type: "text",
+				value: name,
+				label: "Name: ",
+			},
+			{
+				id: "email",
+				name: "email",
+				type: "email",
+				value: email,
+				label: "Email: ",
+			},
+			{
+				id: "password",
+				name: "password",
+				type: "password",
+				value: password,
+				label: "Password: ",
+			},
+		];
 		return (
 			<form id="signup-form-container" onSubmit={this.handleSubmit}>
 				<div id="title-container">
@@ -35,20 +59,12 @@ class SignUp extends Component {
 
 				{/* name, email, password */}
 				<div id="signup-form-input-container">
-					<label id="name">
-						Name:
-						<input id="name" type="text" name="name" onChange={this.handleChange} value={name} />
-					</label>
-
-					<label id="email">
-						Email:
-						<input id="email" type="email" name="email" onChange={this.handleChange} value={email} />
-					</label>
-
-					<label id="password">
-						Password:
-						<input id="password" type="password" name="password" onChange={this.handleChange} value={password} />
-					</label>
+					{fields.map(({ id, name, type, value, label }) => (
+						<label id={id} key={id}>
+							{label}
+							<input id={id} type={type} name={name} onChange={this.handleChange} value={value} />
+						</label>
+					))}
 				</div>
 
 				<div id="signup-form-submit-container">

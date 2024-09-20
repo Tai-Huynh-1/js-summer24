@@ -9,20 +9,30 @@ export default function WelcomeDialog() {
 		setCIndex((prevIndex) => ++prevIndex % colors.length);
 	};
 
+	const buttons = [
+		{
+			color: "primary",
+			text: "Cycle Color",
+		},
+		{
+			color: "success",
+			text: "Second Button",
+		},
+		{
+			color: "danger",
+			text: "Third Button",
+		},
+	];
 	return (
 		<FancyBorder borderColor={colors[cIndex]}>
 			<h1 className="Dialog-title">Welcome</h1>
 			<p className="Dialog-message">Thank you for visiting our spacecraft!</p>
 
-			<Button onClick={handleChangeBorderColor} color={"primary"} className="custom-btn">
-				Cycle Color
-			</Button>
-			<Button onClick={handleChangeBorderColor} color={"success"}>
-				Second Button
-			</Button>
-			<Button onClick={handleChangeBorderColor} color={"danger"}>
-				Third Button
-			</Button>
+			{buttons.map(({ color, text }) => (
+				<Button key={text} onClick={handleChangeBorderColor} color={color}>
+					{text}
+				</Button>
+			))}
 		</FancyBorder>
 	);
 }
