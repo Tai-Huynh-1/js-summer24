@@ -30,7 +30,7 @@ class Clock extends Component {
 		// this.state = { date: new Date()} // wrong way, cannot reassign
 		// this.state.date = new Date() // also wrong way
 
-		console.log("tick running");
+		// console.log("tick running");
 
 		const newState = { date: new Date() };
 		this.setState(newState); // NEED TO USE THIS METHOD TO UPDATE STATE

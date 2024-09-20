@@ -14,7 +14,7 @@ export default function WelcomeDialog() {
 			<h1 className="Dialog-title">Welcome</h1>
 			<p className="Dialog-message">Thank you for visiting our spacecraft!</p>
 
-			<Button onClick={handleChangeBorderColor} color={"primary"}>
+			<Button onClick={handleChangeBorderColor} color={"primary"} className="custom-btn">
 				Cycle Color
 			</Button>
 			<Button onClick={handleChangeBorderColor} color={"success"}>
