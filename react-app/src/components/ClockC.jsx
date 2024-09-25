@@ -15,6 +15,7 @@ export default function ClockC() {
 	function intervalCb() {
 		tick();
 	}
+
 	// perform side effects with useEffect hook
 	// equivalent to componentDidMount & componentWillUnmount
 	useEffect(() => {
@@ -27,7 +28,7 @@ export default function ClockC() {
 		};
 	}, []);
 
-	console.log("rendering");
+	console.log("rendering (generating jsx)");
 	return (
 		<div>
 			<h1>Hello world</h1>
