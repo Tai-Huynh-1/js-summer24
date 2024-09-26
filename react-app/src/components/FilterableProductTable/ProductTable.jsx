@@ -10,10 +10,10 @@ export default function ProductTable({ filteredProducts }) {
 				<div className="title-price">Price</div>
 			</div>
 
-			<div>
+			<div className="products">
 				{filteredProducts.map((category) => {
 					return (
-						<div key={category.categoryName}>
+						<div key={category.categoryName} className="category-row-container">
 							<ProductCategoryRow categoryName={category.categoryName} />
 
 							<div className="product-row-container">

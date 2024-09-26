@@ -31,6 +31,13 @@
 .product-table-title-container .title-name,
 .title-price {
 	width: 50%;
+	text-align: center;
+}
+
+.products {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
 }
 
 .product-table .product-row-container {
@@ -41,8 +48,9 @@
 
 .product-category-row {
 	border: 2px solid turquoise;
-	margin-bottom: 5px;
+	margin-bottom: 3px;
 	padding: 0px 5px;
+	text-align: center;
 }
 
 .product-row {
