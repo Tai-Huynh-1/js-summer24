@@ -1,0 +1,50 @@
+.filterable-product-table {
+	width: 50%;
+	border: 2px solid orange;
+	padding: 5px;
+}
+
+.search-bar-container {
+	border: 2px solid blue;
+	padding: 12px;
+}
+
+.search-bar-container label {
+	display: block;
+	margin-top: 5px;
+}
+
+.search-bar-container input {
+	margin: 0px;
+}
+
+.product-table {
+	border: 2px solid green;
+	margin-top: 5px;
+}
+
+.product-table-title-container {
+	display: flex;
+}
+
+.product-table-title-container .title-name,
+.title-price {
+	width: 50%;
+}
+
+.product-table .product-row-container {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2px;
+}
+
+.product-category-row {
+	border: 2px solid turquoise;
+	margin-bottom: 5px;
+	padding: 0px 5px;
+}
+
+.product-row {
+	border: 2px solid red;
+	padding: 0px 10px;
+}

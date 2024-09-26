@@ -8,11 +8,12 @@ import Counter from "./components/Counter";
 import { SignUpB } from "./components/SignUpB";
 import ClockC from "./components/ClockC";
 import ClockContainer from "./components/ClockContainer";
+import FilterableProductTable from "./components/FilterableProductTable";
 // import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<div>
-		<ClockContainer />
+		<FilterableProductTable />
 	</div>
 );
