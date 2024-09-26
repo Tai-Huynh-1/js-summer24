@@ -21,6 +21,7 @@
 .product-table {
 	border: 2px solid green;
 	margin-top: 5px;
+	padding: 0px 8px 8px 8px;
 }
 
 .product-table-title-container {
