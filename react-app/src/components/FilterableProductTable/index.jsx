@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./FilterableProductTable.css";
 import ProductTable from "./ProductTable";
 import SearchBar from "./SearchBar";
+import Button from "./../Button";
+import useDebounce from "../../hooks/useDebounce";
 
 const products = [
 	{ category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football" },
@@ -51,28 +53,34 @@ function transformProducts(products) {
 			products: categories[category],
 		});
 	}
-	// console.log(transformed);
 	return transformed;
 }
 
 function filter(categories, filterText, checkInStock) {
-	for (const category of categories) {
-		const categoryProduct = category.products;
-		const filteredProducts = categoryProduct.filter((product) => {
-			const name = product.name.toLowerCase();
-			const matchedFilteredText = name.includes(filterText);
-			// if checkInStock is true then return true if both matchedFilteredText && stocked is true
-			return checkInStock ? matchedFilteredText && product.stocked : matchedFilteredText;
-		});
-		category.products = filteredProducts;
-	}
-	return categories;
+	console.log("filter is running");
+	if (filterText === "" && !checkInStock) return categories;
+
+	filterText = filterText.toLowerCase();
+	return categories?.map((category) => {
+		return {
+			...category,
+			products: category.products.filter((product) => {
+				const matchedFilteredText = product.name.toLowerCase().includes(filterText);
+				// if checkInStock is true then return true if both matchedFilteredText && stocked is true
+				return checkInStock ? matchedFilteredText && product.stocked : matchedFilteredText;
+			}),
+		};
+	});
 }
 
 export default function FilterableProductTable() {
 	const [categories, setCategories] = useState([]);
+
 	const [search, setSearch] = useState("");
+	const delayedSearch = useDebounce(search, 500);
+
 	const [inStock, setInStock] = useState(false);
+	const [unRelatedState, setUnrelatedState] = useState(false);
 
 	useEffect(() => {
 		const transformed = transformProducts(products);
@@ -87,12 +95,20 @@ export default function FilterableProductTable() {
 		setInStock(event.target.checked);
 	};
 
-	console.log(filter(categories, search, inStock));
+	// derived state, useMemo to cache values, only rerun when dependencies have changed
+	const filteredCategories = useMemo(() => {
+		return filter(categories, delayedSearch, inStock);
+	}, [categories, delayedSearch, inStock]);
 
+	// console.log("component is re-rendering");
 	return (
 		<div className="filterable-product-table">
 			<SearchBar search={search} inStock={inStock} handleSearchChange={handleSearchChange} handleCheckInStockChange={handleCheckInStockChange} />
-			<ProductTable filteredProducts={productsTransformed} />
+			<ProductTable filteredProducts={filteredCategories} />
+			<Button color="primary" onClick={() => setUnrelatedState((prev) => !prev)}>
+				Update Unrelated State
+			</Button>
+			<p>{unRelatedState ? "true" : "false"}</p>
 		</div>
 	);
 }

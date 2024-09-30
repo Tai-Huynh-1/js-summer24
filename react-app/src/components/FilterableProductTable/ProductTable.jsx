@@ -11,7 +11,7 @@ export default function ProductTable({ filteredProducts }) {
 			</div>
 
 			<div className="products">
-				{filteredProducts.map((category) => {
+				{filteredProducts?.map((category) => {
 					return (
 						<div key={category.categoryName} className="category-row-container">
 							<ProductCategoryRow categoryName={category.categoryName} />
