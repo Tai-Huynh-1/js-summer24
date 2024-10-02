@@ -1,10 +1,11 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
-	const user = { id: 1 };
+	const user = null;
 	return (
 		<div>
-			{user?.id > 0 ? <PrivateNavbar /> : <Navbar />}
+			{user ? <div>Private</div> : <Navbar />}
 			{children}
 		</div>
 	);
