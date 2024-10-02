@@ -75,7 +75,6 @@ function filter(categories, filterText, checkInStock) {
 
 export default function FilterableProductTable() {
 	const [categories, setCategories] = useState([]);
-
 	const [search, setSearch] = useState("");
 	const delayedSearch = useDebounce(search, 500);
 

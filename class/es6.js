@@ -93,7 +93,7 @@ function outer(a) {
 // const returnedFunc = outer(5);
 // console.log(returnedFunc(6));
 
-// hiding variables and exposing functionality usign closrue & functional programming
+// hiding variables and exposing functionality usign closure & functional programming
 function counter() {
 	let counter = 0;
 
