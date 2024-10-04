@@ -78,11 +78,11 @@ const LoginForm = () => {
 					{!validPwd && pwd.length > 0 && <p className="text-red-500">Not a valid password</p>}
 				</div>
 
-				<Button type="submit" disabled={isLoading || !validEmail || !validPwd}>
+				<Button color="primary" type="submit" disabled={isLoading || !validEmail || !validPwd}>
 					Log in
 				</Button>
 
-				<Button secondary onClick={goBack}>
+				<Button color="danger" onClick={goBack}>
 					Go Back
 				</Button>
 			</form>

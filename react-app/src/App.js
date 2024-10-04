@@ -4,6 +4,7 @@ import Home from "./pages";
 import PublicRoutes from "./components/Layout/PublicRoutes";
 import Unauthorized from "./pages/Unauthorized";
 import Login from "./pages/public/auth/Login";
+import Register from "./pages/public/auth/Register";
 
 function App() {
 	return (
@@ -12,7 +13,7 @@ function App() {
 			<Route path="/" element={<PublicRoutes />}>
 				<Route index element={<Home />} />
 				<Route path="login" element={<Login />} />
-				{/* <Route path="register" element={<Register />} /> */}
+				<Route path="register" element={<Register />} />
 				<Route path="unauthorized" element={<Unauthorized />} />
 			</Route>
 
