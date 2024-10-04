@@ -19,3 +19,7 @@
 .btn-danger {
 	background-color: rgb(194, 93, 96);
 }
+
+.btn-disabled {
+	opacity: 0.7;
+}
