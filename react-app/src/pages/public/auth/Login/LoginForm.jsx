@@ -10,8 +10,7 @@ const LoginForm = () => {
 	const emailRef = useRef();
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { setUser } = useAuth();
-	const { fakeLogin, generateToken } = useFakeLogin();
+	const { login, loginErr, setLoginErr, isLoading, setIsLoading } = useAuth();
 	const from = location.state?.from?.pathname || "/dashboard";
 
 	const [email, setEmail] = useState("");
@@ -20,7 +19,7 @@ const LoginForm = () => {
 	const [pwd, setPwd] = useState("");
 	const [validPwd, setValidPwd] = useState(false);
 
-	const [isLoading, setIsLoading] = useState(false);
+	// const [isLoading, setIsLoading] = useState(false);
 	const [errMsg, setErrMsg] = useState("");
 
 	const goBack = () => navigate(-1);
@@ -40,7 +39,7 @@ const LoginForm = () => {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		setErrMsg("");
+		setLoginErr(null);
 		setIsLoading(true);
 
 		// perform final validation
@@ -53,23 +52,26 @@ const LoginForm = () => {
 			return;
 		}
 
-		try {
-			const response = await fakeLogin();
-			setUser({ ...response.data, accessToken: generateToken() });
-			// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie
-			localStorage.setItem("refreshToken", `refresh: ${Math.floor(Math.random() * 100)}`);
-			console.log("set user on first log in");
-			navigate(from, { replace: true });
-		} catch (err) {
-			setErrMsg("The server could not be reached. Please try again later.");
-			setIsLoading(false);
-		}
+		login(from);
+
+		// try {
+		// 	const response = await fakeLogin();
+		// 	setUser({ ...response.data, accessToken: generateToken() });
+		// 	// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie
+		// 	localStorage.setItem("refreshToken", `refresh: ${Math.floor(Math.random() * 100)}`);
+		// 	console.log("set user on first log in");
+		// 	navigate(from, { replace: true });
+		// } catch (err) {
+		// 	setErrMsg("The server could not be reached. Please try again later.");
+		// 	setIsLoading(false);
+		// }
 	};
 
 	if (isLoading) return <div>Logging In...</div>;
 
 	return (
 		<>
+			{loginErr && <h1>{loginErr.message}</h1>}
 			<form onSubmit={handleLogin} className="flex flex-col gap-3 w-7/12 md:w-4/12 lg:w-3/12 mx-auto">
 				<div className="flex flex-col">
 					<label htmlFor="email">Email: </label>
