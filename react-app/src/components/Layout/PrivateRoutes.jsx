@@ -1,12 +1,15 @@
 import React from "react";
 import Layout from ".";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const PrivateRoutes = () => {
 	const location = useLocation();
+	const { user } = useAuth();
 
-	const user = null;
-	const isAuthenticated = user && user.id > 0;
+	console.log("user in private routes", user);
+
+	const isAuthenticated = user && user.id > 0 && user.accessToken;
 
 	return isAuthenticated ? (
 		<Layout>
