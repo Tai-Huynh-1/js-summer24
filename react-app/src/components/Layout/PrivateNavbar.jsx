@@ -28,6 +28,12 @@ const PrivateNavbar = () => {
 				<li>
 					<Link to="/comments">Comments</Link>
 				</li>
+				<li>
+					<Link to="/login">Login</Link>
+				</li>
+				<li>
+					<Link to="/register">Register</Link>
+				</li>
 			</ul>
 
 			<div className="flex gap-3">
