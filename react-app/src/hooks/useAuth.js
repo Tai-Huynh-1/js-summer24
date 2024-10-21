@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const useAuth = () => {
-	const context = useContext(AuthContext);
+	const contextValue = useContext(AuthContext);
 
-	if (!context) throw Error("Context cannot be accessed outside of the provider.");
+	if (!contextValue) throw Error("Context cannot be accessed outside of the provider.");
 
-	return context;
+	return contextValue;
 };
 
 export default useAuth;

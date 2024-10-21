@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Button from "../components/Button";
+import AccessControl from "../components/Layout/AccessControl";
 
 const Home = () => {
 	const [user, setUser] = useState(null);
@@ -79,6 +81,13 @@ const Home = () => {
 	return (
 		<div>
 			<h1>Welcome back, {user?.name}</h1>
+			<AccessControl>
+				<Button color="primary">Test A</Button>
+			</AccessControl>
+
+			<AccessControl>
+				<Button color="primary">Test B</Button>
+			</AccessControl>
 		</div>
 	);
 };

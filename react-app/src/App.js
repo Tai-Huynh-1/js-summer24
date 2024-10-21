@@ -10,6 +10,7 @@ import PrivateRoutes from "./components/Layout/PrivateRoutes";
 import Dashboard from "./pages/private/Dashboard";
 import Admin from "./pages/private/Admin";
 import SuperAdmin from "./pages/private/SuperAdmin";
+import AuthCannotAccess from "./components/Layout/AuthCannotAccess";
 
 function App() {
 	return (
@@ -17,8 +18,22 @@ function App() {
 			{/* Public Routes */}
 			<Route path="/" element={<PublicRoutes />}>
 				<Route index element={<Home />} />
-				<Route path="login" element={<Login />} />
-				<Route path="register" element={<Register />} />
+				<Route
+					path="login"
+					element={
+						<AuthCannotAccess>
+							<Login />
+						</AuthCannotAccess>
+					}
+				/>
+				<Route
+					path="register"
+					element={
+						<AuthCannotAccess>
+							<Register />
+						</AuthCannotAccess>
+					}
+				/>
 				<Route path="unauthorized" element={<Unauthorized />} />
 			</Route>
 
