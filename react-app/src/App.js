@@ -11,6 +11,7 @@ import Dashboard from "./pages/private/Dashboard";
 import Admin from "./pages/private/Admin";
 import SuperAdmin from "./pages/private/SuperAdmin";
 import AuthCannotAccess from "./components/Layout/AuthCannotAccess";
+import AccessControl from "./components/Layout/AccessControl";
 
 function App() {
 	return (
@@ -40,8 +41,22 @@ function App() {
 			{/* Private Routes */}
 			<Route element={<PrivateRoutes />}>
 				<Route path="/dashboard" element={<Dashboard />} />
-				<Route path="/admin" element={<Admin />} />
-				<Route path="/super-admin" element={<SuperAdmin />} />
+				<Route
+					path="/admin"
+					element={
+						<AccessControl role={"admin"} requiredRoles={["admin", "super-admin"]} isPage={true}>
+							<Admin />
+						</AccessControl>
+					}
+				/>
+				<Route
+					path="/super-admin"
+					element={
+						<AccessControl role={"super-admin"} requiredRoles={["super-admin"]} isPage>
+							<SuperAdmin />
+						</AccessControl>
+					}
+				/>
 			</Route>
 		</Routes>
 	);

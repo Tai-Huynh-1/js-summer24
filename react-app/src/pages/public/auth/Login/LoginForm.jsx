@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../../../components/Button";
 import useAuth from "../../../../hooks/useAuth";
-import useFakeLogin from "../../../../hooks/useFakeLogin";
 
 const EMAIL_REGEX = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -53,18 +52,6 @@ const LoginForm = () => {
 		}
 
 		login(from);
-
-		// try {
-		// 	const response = await fakeLogin();
-		// 	setUser({ ...response.data, accessToken: generateToken() });
-		// 	// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie
-		// 	localStorage.setItem("refreshToken", `refresh: ${Math.floor(Math.random() * 100)}`);
-		// 	console.log("set user on first log in");
-		// 	navigate(from, { replace: true });
-		// } catch (err) {
-		// 	setErrMsg("The server could not be reached. Please try again later.");
-		// 	setIsLoading(false);
-		// }
 	};
 
 	if (isLoading) return <div>Logging In...</div>;
