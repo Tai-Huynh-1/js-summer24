@@ -6,7 +6,7 @@ const Unauthorized = () => {
 
 	const goBack = () => navigate(-1);
 	return (
-		<div>
+		<div data-testid="unauthorized-page">
 			<h1>You are unauthorized to access this page</h1>
 			<button onClick={goBack}>Go Back</button>
 		</div>
