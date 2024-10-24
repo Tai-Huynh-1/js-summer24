@@ -15,9 +15,9 @@ const AccessControl = (props) => {
 	const { role, requiredRoles, isPage, children } = props;
 
 	const hasAccess = checkAccess(role, requiredRoles);
+
 	if (!hasAccess && isPage) return <Navigate to={"/unauthorized"} replace />; // page component
 	if (!hasAccess) return null; // regular component
-
 	return children;
 };
 

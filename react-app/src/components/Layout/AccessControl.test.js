@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import AccessControl, { checkAccess } from "./AccessControl";
+import { expect } from "@jest/globals";
+import { BrowserRouter } from "react-router-dom";
 
 describe("checkAccess function works properly", () => {
 	it("should allow access if requiredRoles is not provided", () => {
@@ -16,27 +18,68 @@ describe("checkAccess function works properly", () => {
 		expect(hasAccess).toBe(true);
 	});
 
-	it("should not allow access if role is not provided, but requiredRole is present", () => {});
+	it("should not allow access if role is not provided, but requiredRoles is provided", () => {
+		const role = undefined;
+		const requiredRoles = ["admin", "super-admin"];
+		const hasAccess = checkAccess(role, requiredRoles);
+		expect(hasAccess).toBe(false);
+	});
 
-	// role & requireRoles is given but role is not present in requireRoles
+	it("should not allow access if role is no in requireRoles", () => {
+		const role = "user";
+		const requiredRoles = ["admin", "super-admin"];
+		const hasAccess = checkAccess(role, requiredRoles);
+		expect(hasAccess).toBe(false);
+	});
 
-	// additional case of no role and no requireRoles
+	it("should allow access if no arguments are passed into checkAccess", () => {
+		const hasAccess = checkAccess();
+		expect(hasAccess).toBe(true);
+	});
 });
 
 describe("AccessControl component", () => {
-	it("should render non-page children component with proper role", () => {
+	it("should render when user has access and children is not a page", () => {
 		// arrange
 		render(
-			<AccessControl role="user" requiredRole={["user", "admin"]} isPage={false}>
+			<AccessControl role="user" requiredRoles={["user", "admin"]} isPage={false}>
 				<h1>Hello World</h1>
 			</AccessControl>
 		);
-
 		// act (optional depending on test case)
-
 		// assert
 		const h1Element = screen.getByRole("heading");
 		expect(h1Element).toBeInTheDocument();
 		expect(h1Element).toHaveTextContent("Hello World");
+	});
+
+	// should render when user has access and children is a page
+
+	it("should navigate to unauthorized page when user does not have access and children is a page", () => {
+		// arrange
+		render(
+			<BrowserRouter>
+				<AccessControl role="user" requiredRoles={["admin", "super-admin"]} isPage={true}>
+					<div>Mock Page</div>
+				</AccessControl>
+			</BrowserRouter>
+		);
+
+		// assert
+		const page = screen.queryByText("Mock Page");
+		expect(page).not.toBeInTheDocument();
+	});
+
+	it("should render null if user does not have access and children is not a page", () => {
+		// arrange
+		render(
+			<AccessControl role="user" requiredRoles={["admin", "super-admin"]} isPage={false}>
+				<button>Submit</button>
+			</AccessControl>
+		);
+		// act
+		// assert
+		const buttonElement = screen.queryByText("Submit");
+		expect(buttonElement).not.toBeInTheDocument();
 	});
 });
