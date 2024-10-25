@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import AccessControl, { checkAccess } from "./AccessControl";
 import { expect } from "@jest/globals";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import Unauthorized from "../../pages/Unauthorized";
 
 describe("checkAccess function works properly", () => {
 	it("should allow access if requiredRoles is not provided", () => {
@@ -53,21 +54,41 @@ describe("AccessControl component", () => {
 		expect(h1Element).toHaveTextContent("Hello World");
 	});
 
-	// should render when user has access and children is a page
+	it("should render when user has access and childre is a page", () => {
+		render(
+			<AccessControl role="super-admin" requiredRoles={["admin", "super-admin"]} isPage={true}>
+				<div>Mock Page</div>
+			</AccessControl>
+		);
+
+		const mockPage = screen.queryByText("Mock Page");
+		expect(mockPage).toBeInTheDocument();
+	});
 
 	it("should navigate to unauthorized page when user does not have access and children is a page", () => {
+		const testPage = (
+			<AccessControl role="user" requiredRoles={["admin", "super-admin"]} isPage={true}>
+				<div>Mock Page</div>
+			</AccessControl>
+		);
+
 		// arrange
 		render(
-			<BrowserRouter>
-				<AccessControl role="user" requiredRoles={["admin", "super-admin"]} isPage={true}>
-					<div>Mock Page</div>
-				</AccessControl>
-			</BrowserRouter>
+			<MemoryRouter initialEntries={["/"]}>
+				<Routes>
+					<Route path="/" element={testPage} />
+					<Route path="unauthorized" element={<Unauthorized />} />
+				</Routes>
+			</MemoryRouter>
 		);
 
 		// assert
-		const page = screen.queryByText("Mock Page");
-		expect(page).not.toBeInTheDocument();
+		const mockPage = screen.queryByText("Mock Page");
+		expect(mockPage).not.toBeInTheDocument();
+
+		// assert unauthorized page shows up instead
+		const unauthorizedPage = screen.queryByTestId("unauthorized-page");
+		expect(unauthorizedPage).toBeInTheDocument();
 	});
 
 	it("should render null if user does not have access and children is not a page", () => {
